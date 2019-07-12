@@ -10,7 +10,7 @@
 // And add it to the DOM in the .headerContainer component
 
 const Header = () => {
-  const headerContainer = document.querySelector('header-container');
+  const headerContainer = document.querySelector('.header-container');
   const headerDiv = document.createElement('div');
   const dateSpan = document.createElement('span');
   const header = document.createElement('h1');
