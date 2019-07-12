@@ -20,7 +20,6 @@
 const images = ['mountains.jpeg','computer.jpeg','trees.jpeg','turntable.jpeg'];
 
 const carouselGen = (pics) => {
-  console.log('running');
   const carouselContainer = document.querySelector('.carousel-container');
   const carouselDiv = document.createElement('div');
   carouselDiv.className = 'carousel';
