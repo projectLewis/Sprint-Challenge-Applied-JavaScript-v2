@@ -17,3 +17,79 @@
     <div class="right-button"> > </div>
   </div>
 */
+const images = ['mountains.jpeg','computer.jpeg','trees.jpeg','turntable.jpeg'];
+
+const carouselGen = (pics) => {
+  console.log('running');
+  const carouselContainer = document.querySelector('.carousel-container');
+  const carouselDiv = document.createElement('div');
+  carouselDiv.className = 'carousel';
+  carouselContainer.appendChild(carouselDiv);
+
+  const leftButton = document.createElement('div');
+  leftButton.className = 'left-button'
+  leftButton.textContent = '<'
+  console.log(carouselContainer)
+  carouselDiv.appendChild(leftButton);
+
+  const imageDiv = document.createElement('div');
+  imageDiv.className = 'carouselImgs';
+  carouselDiv.appendChild(imageDiv);
+
+  const rightButton = document.createElement('div');
+  rightButton.className = 'right-button';
+  rightButton.textContent = '>'
+  carouselDiv.appendChild(rightButton);
+
+  pics.forEach((img) => {
+    const image = document.createElement('img');
+    image.src = `./assets/carousel/${img}`
+    imageDiv.appendChild(image);
+  })
+}
+
+carouselGen(images);
+
+let carouselImages = document.querySelector('.carouselImgs');
+
+const firstImage = carouselImages.querySelector('img');
+firstImage.style.display = "block";
+
+// selects the left and right buttons
+const rightButton = document.querySelector('.right-button');
+const leftButton = document.querySelector('.left-button');
+
+// sets the starting state for the function below
+let currentImage = firstImage;
+
+// previos image function
+const previousImageFn = () => {
+    currentImage.style.display = "none";
+    if (currentImage.previousElementSibling) {
+        carouselImages.lastElementChild.style.display = "block";
+        currentImage = carouselImages.lastElementChild;
+    }
+    else {
+        currentImage.previousElementSibling.style.display = "block";
+        currentImage = currentImage.previousElementSibling;
+    }
+    return currentImage;
+}
+
+// next image function
+const nextImageFn = () => {
+    currentImage.style.display = "none";
+    if (!currentImage.nextElementSibling) {
+        firstImage.style.display = "block";
+        currentImage = firstImage;
+    }
+    else {
+        currentImage.nextElementSibling.style.display = "block";
+        currentImage = currentImage.nextElementSibling;
+    }
+    return currentImage;
+}
+
+rightButton.addEventListener('click', nextImageFn);
+leftButton.addEventListener('click', previousImageFn);
+
