@@ -9,4 +9,6 @@
 //  </div >
 // And add it to the DOM in the .headerContainer component
 
-function Header() {}
+const Header = () => {
+  const headerContainer = document.querySelector('header-container');
+}
