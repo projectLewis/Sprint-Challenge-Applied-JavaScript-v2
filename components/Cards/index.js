@@ -20,7 +20,6 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
   .then(response => {
-    console.log('obj');
     for (key in response.data.articles) {
       response.data.articles[key].forEach(el => {
         const {authorName, authorPhoto, headline} = el
